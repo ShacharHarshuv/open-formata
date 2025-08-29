@@ -48,7 +48,7 @@ export function NotesSection({
     const s3 = s2.sort((a, b) => a.top - b.top);
     console.log("s3", s3);
     return s3;
-  }, [sections, anchors, mainContentRef]);
+  }, [sections, anchors, mainContentRef.current]);
 
   console.log("notesPreprocess", notesPreprocess);
 
