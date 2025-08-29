@@ -42,12 +42,11 @@ export function NotesSection({
       })
       .filter((n) => n !== null)
       .sort((a, b) => a.top - b.top);
-  }, [sections, anchors, mainContentRef]);
+  }, [sections, anchors, mainContentRef.current]);
 
   const notes = useMemo(() => {
     return notesPreprocess.map((note, index): NoteProps => {
       const nextNote = notesPreprocess[index + 1];
-      console.log(note.top, nextNote?.top);
 
       return {
         ...note,
