@@ -26,25 +26,28 @@ export function NotesSection({
       return [];
     }
 
-    return sections
-      .map((s) => {
-        if (isNil(s.attributes.notes)) {
-          return null;
-        }
-        const anchor = anchors[s.id];
-        if (!anchor) {
-          return null;
-        }
-        return {
-          id: s.id,
-          content: s.attributes.notes,
-          anchor,
-          section: s,
-          top: getTop(anchor, mainContentRef.current!),
-        };
-      })
-      .filter((n) => n !== null)
-      .sort((a, b) => a.top - b.top);
+    const s1 = sections.map((s) => {
+      if (isNil(s.attributes.notes)) {
+        return null;
+      }
+      const anchor = anchors[s.id];
+      if (!anchor) {
+        return null;
+      }
+      return {
+        id: s.id,
+        content: s.attributes.notes,
+        anchor,
+        section: s,
+        top: getTop(anchor, mainContentRef.current!),
+      };
+    });
+    console.log("s1", s1);
+    const s2 = s1.filter((n) => n !== null);
+    console.log("s2", s2);
+    const s3 = s2.sort((a, b) => a.top - b.top);
+    console.log("s3", s3);
+    return s3;
   }, [sections, anchors, mainContentRef]);
 
   console.log("notesPreprocess", notesPreprocess);
