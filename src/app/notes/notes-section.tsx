@@ -17,6 +17,8 @@ export function NotesSection({
   // const top = useTop(ref, mainContentRef);
   const bottom = useBottom(ref, mainContentRef);
   const anchors = NotesAnchors.useAnchors();
+  console.log("anchors", anchors);
+  console.log("sections", sections);
 
   const notesPreprocess = useMemo(() => {
     if (!mainContentRef.current) {
