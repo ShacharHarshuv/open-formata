@@ -19,6 +19,7 @@ export function NotesSection({
   const anchors = NotesAnchors.useAnchors();
   console.log("anchors", anchors);
   console.log("sections", sections);
+  console.log("mainContentRef", mainContentRef.current);
 
   const notesPreprocess = useMemo(() => {
     if (!mainContentRef.current) {
