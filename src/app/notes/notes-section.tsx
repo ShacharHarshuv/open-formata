@@ -44,6 +44,8 @@ export function NotesSection({
       .sort((a, b) => a.top - b.top);
   }, [sections, anchors, mainContentRef]);
 
+  console.log("notesPreprocess", notesPreprocess);
+
   const notes = useMemo(() => {
     return notesPreprocess.map((note, index): NoteProps => {
       const nextNote = notesPreprocess[index + 1];
@@ -55,6 +57,8 @@ export function NotesSection({
       };
     });
   }, [notesPreprocess, bottom]);
+
+  console.log("notes", notes);
 
   return (
     <div className="relative h-full" ref={ref as Ref<HTMLDivElement>}>

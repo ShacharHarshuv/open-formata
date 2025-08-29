@@ -137,8 +137,6 @@ function DiagramBody({ diagram }: { diagram: Diagram }) {
 }
 
 function systemSectionsNestingDepth(segments: SystemSegment[]): number {
-  console.log("calculating nesting depth", segments);
-
   const maxInnerDepth = max(
     segments.map((segment) =>
       segment.type === "MultiSystemSection"
