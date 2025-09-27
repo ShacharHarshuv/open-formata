@@ -1,7 +1,10 @@
 import { createAction } from "@/app/actions/action";
+import { CopyIcon } from "@/app/icons/copy-icon";
+import { PasteIcon } from "@/app/icons/paste-icon";
 import { current } from "@/app/store/current";
 import { mutateStore } from "@/app/store/mutate-store";
 import { selectedRange } from "@/app/store/selected-range";
+import React from "react";
 import { useIsBarsSelected } from "./_use-is-bars-selected";
 
 function isWritableFocus() {
@@ -17,6 +20,7 @@ function isWritableFocus() {
 export const copyBars = createAction({
   description: "Copy Bars",
   hotkey: "ctrl+c",
+  icon: React.createElement(CopyIcon),
   useIsAvailable: useIsBarsSelected,
   perform: async () => {
     // Don't interfere with normal copy operations in text fields
@@ -49,6 +53,7 @@ export const copyBars = createAction({
 export const pasteBars = createAction({
   description: "Paste Bars",
   hotkey: "ctrl+v",
+  icon: React.createElement(PasteIcon),
   useIsAvailable: useIsBarsSelected,
   perform: async () => {
     // Don't interfere with normal paste operations in text fields

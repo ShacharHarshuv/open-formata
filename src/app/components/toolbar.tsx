@@ -1,6 +1,7 @@
 "use client";
 
 import { addBars } from "@/app/actions/add-bars";
+import { copyBars, pasteBars } from "@/app/actions/copy-paste-bars";
 import { createSection } from "@/app/actions/create-section";
 import { deleteSelected } from "@/app/actions/delete";
 import { newFile } from "@/app/actions/new";
@@ -73,6 +74,8 @@ export function Toolbar() {
           <div className="w-px h-6 bg-gray-300 mx-2" />
           {tool(undo)}
           {tool(redo)}
+          {tool(copyBars)}
+          {tool(pasteBars)}
           <div className="w-px h-6 bg-gray-300 mx-2" />
           {tool(addBars, addButton)}
           {tool(deleteSelected)}
