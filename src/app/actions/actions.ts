@@ -1,4 +1,5 @@
 import { addBars } from "@/app/actions/add-bars";
+import { copyBars, pasteBars } from "@/app/actions/copy-paste-bars";
 import { createSection } from "@/app/actions/create-section";
 import { deleteSelected } from "@/app/actions/delete";
 import { deselectEverything } from "@/app/actions/deselect";
@@ -17,6 +18,8 @@ export const useActions = () => [
   createSection,
   deleteSelected,
   addBars,
+  copyBars,
+  pasteBars,
   undo,
   redo,
   save,
