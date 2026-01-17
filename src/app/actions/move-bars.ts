@@ -26,11 +26,24 @@ function moveBars(direction: -1 | 1) {
         end: range[1],
       };
 
-      const rangeLength = currentSelection.end - currentSelection.start + 1;
+      const selectionSize = currentSelection.end - currentSelection.start + 1;
+
+      const isCompletelyWithin = (section: {
+        start: number;
+        end: number;
+      }) => {
+        return (
+          section.start >= currentSelection.start &&
+          section.end <= currentSelection.end
+        );
+      };
 
       const leavingSections = sortBy(
         document.sections.filter((section) => {
-          return section[leavingSide] === currentSelection[leavingSide];
+          return (
+            section[leavingSide] === currentSelection[leavingSide] &&
+            !isCompletelyWithin(section)
+          );
         }),
         (section) => section.end - section.start,
       );
@@ -47,14 +60,15 @@ function moveBars(direction: -1 | 1) {
           return;
         }
 
-        firstLeavingSection[leavingSide] += rangeLength * direction * -1;
+        firstLeavingSection[leavingSide] += selectionSize * direction * -1;
         return;
       }
 
       const enteringSections = sortBy(
         document.sections.filter((section) => {
           return (
-            section[enteringSide] === currentSelection[leavingSide] + direction
+            section[enteringSide] === currentSelection[leavingSide] + direction &&
+            !isCompletelyWithin(section)
           );
         }),
         (section) => section.start - section.end,
@@ -62,7 +76,7 @@ function moveBars(direction: -1 | 1) {
 
       const firstEnteringSection = first(enteringSections);
       if (firstEnteringSection) {
-        firstEnteringSection[enteringSide] += rangeLength * direction * -1;
+        firstEnteringSection[enteringSide] += selectionSize * direction * -1;
         return;
       }
     });
