@@ -6,7 +6,7 @@ import clsx from "clsx";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 
-export default function Bar(props: BarProps) {
+export default function Bar(props: BarProps & { isEvenInSystem?: boolean }) {
   const [isEditing, setIsEditing] = useState(false);
   const [editValue, setEditValue] = useState(props.content || "");
 
@@ -59,8 +59,12 @@ export default function Bar(props: BarProps) {
       className={clsx(
         "inline-block h-8 cursor-pointer border-r border-gray-300 px-2 select-none relative",
         isSelected
-          ? "bg-gray-200 hover:bg-gray-300"
-          : "bg-gray-50 hover:bg-gray-100",
+          ? props.isEvenInSystem
+            ? "bg-gray-200 hover:bg-gray-300"
+            : "bg-gray-300 hover:bg-gray-400"
+          : props.isEvenInSystem
+            ? "bg-gray-50 hover:bg-gray-100"
+            : "bg-gray-100 hover:bg-gray-200",
       )}
       onMouseDown={(event) => {
         if (event.shiftKey) {

@@ -1,6 +1,6 @@
-import { System as SystemProps } from "@/app/music-diagram-ast/music-diagram-ast";
 import Bar from "@/app/components/Bar";
 import { InlineSection } from "@/app/components/inline-section";
+import { System as SystemProps } from "@/app/music-diagram-ast/music-diagram-ast";
 
 export function System(props: SystemProps) {
   return (
@@ -13,7 +13,9 @@ export function System(props: SystemProps) {
         </div>
         <div className="col-span-full grid grid-cols-subgrid">
           {props.bars.map((bar, index) => {
-            return <Bar {...bar} key={index} />;
+            return (
+              <Bar {...bar} isEvenInSystem={index % 2 === 0} key={index} />
+            );
           })}
         </div>
       </div>
