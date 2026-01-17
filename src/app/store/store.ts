@@ -12,7 +12,7 @@ export interface StoreValue {
     section: string | null;
   };
   displayPreferences: {
-    notateToRealRatio: 1 | 2;
+    notateToRealRatio: 1 | 2 | 4;
   };
 }
 

@@ -103,8 +103,13 @@ function NotateToRealRatioControl() {
     <button
       onClick={() => {
         mutateStore((store) => {
-          store.displayPreferences.notateToRealRatio =
-            store.displayPreferences.notateToRealRatio === 1 ? 2 : 1;
+          if (store.displayPreferences.notateToRealRatio === 1) {
+            store.displayPreferences.notateToRealRatio = 2;
+          } else if (store.displayPreferences.notateToRealRatio === 2) {
+            store.displayPreferences.notateToRealRatio = 4;
+          } else {
+            store.displayPreferences.notateToRealRatio = 1;
+          }
         });
       }}
       className="px-3 py-1 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
