@@ -14,6 +14,8 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { Action } from "../actions/action";
 import { current } from "../store/current";
+import { mutateStore } from "../store/mutate-store";
+import { useStore } from "../store/store";
 import { ToolButton } from "./tool-button";
 
 export function Toolbar() {
@@ -84,8 +86,31 @@ export function Toolbar() {
             <ToolButton key={action.description} action={action} />
           ))} */}
           {tool(addNotes)}
+          <div className="w-px h-6 bg-gray-300 mx-2" />
+          <NotateToRealRatioControl />
         </div>
       </div>
     </div>
+  );
+}
+
+function NotateToRealRatioControl() {
+  const notateToRealRatio = useStore(
+    (state) => state.displayPreferences.notateToRealRatio,
+  );
+
+  return (
+    <button
+      onClick={() => {
+        mutateStore((store) => {
+          store.displayPreferences.notateToRealRatio =
+            store.displayPreferences.notateToRealRatio === 1 ? 2 : 1;
+        });
+      }}
+      className="px-3 py-1 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+      title={`Notate to Real Ratio: ${notateToRealRatio}:1`}
+    >
+      {notateToRealRatio}:1
+    </button>
   );
 }

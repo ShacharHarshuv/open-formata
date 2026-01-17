@@ -12,8 +12,6 @@ export interface StoreValue {
     section: string | null;
   };
   displayPreferences: {
-    // TODO: allow editing it through the UI. For now we can use the mutateStore from the devTools programmaticaly
-    // TODO: consider if we want this as part of the document (i.e. "saved")
     notateToRealRatio: 1 | 2;
   };
 }

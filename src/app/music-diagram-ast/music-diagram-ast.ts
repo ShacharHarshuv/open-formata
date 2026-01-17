@@ -307,9 +307,13 @@ export function createMusicDiagramAst(
     return elements
       .map((element) => {
         if (element.type === "Section") {
+          const processedElements = preProcessElements(element.elements);
+          if (processedElements.length === 0) {
+            return null;
+          }
           return {
             ...element,
-            elements: preProcessElements(element.elements),
+            elements: processedElements,
           };
         }
 
