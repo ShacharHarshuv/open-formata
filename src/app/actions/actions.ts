@@ -12,6 +12,7 @@ import { redo } from "@/app/actions/redo";
 import { save } from "@/app/actions/save";
 import { undo } from "@/app/actions/undo";
 import { addNotes } from "../notes/add-note";
+import { exportSvg } from "./export-svg";
 import { share } from "./share";
 
 export const useActions = () => [
@@ -31,4 +32,5 @@ export const useActions = () => [
   ...moveBarsActions,
   addNotes,
   share,
+  exportSvg,
 ];

@@ -109,7 +109,9 @@ export function App() {
             }
           >
             <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] md:grid-cols-[1fr_300px] sm:grid-cols-[1fr_150px] gap-[var(--nesting-gap)]">
-              <DiagramBody diagram={diagramAst} />
+              <div data-diagram-container>
+                <DiagramBody diagram={diagramAst} />
+              </div>
               <div className="max-sm:hidden">
                 <NotesSection mainContentRef={mainContentRef} />
               </div>

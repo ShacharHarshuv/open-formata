@@ -6,6 +6,7 @@ import { createSection } from "@/app/actions/create-section";
 import { deleteSelected } from "@/app/actions/delete";
 import { newFile } from "@/app/actions/new";
 import { open } from "@/app/actions/open";
+import { exportSvg } from "@/app/actions/export-svg";
 import { redo } from "@/app/actions/redo";
 import { save } from "@/app/actions/save";
 import { undo } from "@/app/actions/undo";
@@ -73,6 +74,7 @@ export function Toolbar() {
           {tool(newFile)}
           {tool(open)}
           {tool(save)}
+          {tool(exportSvg)}
           <div className="w-px h-6 bg-gray-300 mx-2" />
           {tool(undo)}
           {tool(redo)}
