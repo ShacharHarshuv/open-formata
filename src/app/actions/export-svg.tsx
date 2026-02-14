@@ -19,6 +19,7 @@ function systemSectionsNestingDepth(segments: SystemSegment[]): number {
   return maxInnerDepth ? maxInnerDepth + 1 : 1;
 }
 
+// todo: the resulting SVG is not really usable. Not sure why.
 export const exportSvg = createAction({
   description: "Export as SVG",
   icon: React.createElement(ExportIcon),

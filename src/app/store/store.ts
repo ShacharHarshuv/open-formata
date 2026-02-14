@@ -13,6 +13,7 @@ export interface StoreValue {
   };
   displayPreferences: {
     notateToRealRatio: 1 | 2 | 4;
+    barsPerSystem: 4 | 8;
   };
 }
 
@@ -26,6 +27,7 @@ export const initialStoreValue: StoreValue = {
   },
   displayPreferences: {
     notateToRealRatio: 1,
+    barsPerSystem: 8,
   },
 };
 

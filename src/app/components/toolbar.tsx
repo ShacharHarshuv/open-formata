@@ -90,6 +90,7 @@ export function Toolbar() {
           {tool(addNotes)}
           <div className="w-px h-6 bg-gray-300 mx-2" />
           <NotateToRealRatioControl />
+          <BarsPerSystemControl />
         </div>
       </div>
     </div>
@@ -118,6 +119,26 @@ function NotateToRealRatioControl() {
       title={`Notate to Real Ratio: ${notateToRealRatio}:1`}
     >
       {notateToRealRatio}:1
+    </button>
+  );
+}
+
+function BarsPerSystemControl() {
+  const barsPerSystem = useStore(
+    (state) => state.displayPreferences.barsPerSystem ?? 8,
+  );
+
+  return (
+    <button
+      onClick={() => {
+        mutateStore((store) => {
+          store.displayPreferences.barsPerSystem = barsPerSystem === 8 ? 4 : 8;
+        });
+      }}
+      className="px-3 py-1 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1"
+      title={`Bars per system: ${barsPerSystem}`}
+    >
+      {barsPerSystem}/system
     </button>
   );
 }

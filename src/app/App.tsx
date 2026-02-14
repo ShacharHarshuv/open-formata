@@ -124,13 +124,23 @@ export function App() {
 }
 
 function DiagramBody({ diagram }: { diagram: Diagram }) {
+  const barsPerSystem = useStore(
+    (state) => state.displayPreferences.barsPerSystem ?? 8,
+  );
+
   return (
     <>
       <div className="col-span-2 empty:hidden">
         <GettingStartedHints />
       </div>
       {diagram.segments.length ? (
-        <div className="grid grid-cols-8 gap-y-3">
+        <div
+          className={
+            barsPerSystem === 4
+              ? "grid grid-cols-4 gap-y-3"
+              : "grid grid-cols-8 gap-y-3"
+          }
+        >
           <SystemSegments segments={diagram.segments} />
         </div>
       ) : null}

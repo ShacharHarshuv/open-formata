@@ -196,8 +196,6 @@ function createBarsWithSections(doc: MusicDiagramDocument) {
   return rootSection.elements;
 }
 
-const maxBarsInSystem = 8; // todo: we might want to make this customizable eventually
-
 function createEmptySystem(): System {
   return {
     type: "System",
@@ -210,6 +208,8 @@ export function createMusicDiagramAst(
   doc: MusicDiagramDocument,
   displayPreferences = initialStoreValue.displayPreferences,
 ): Diagram {
+  const maxBarsInSystem = displayPreferences.barsPerSystem ?? 8;
+
   function createSegments(elements: (Section | Bar)[]) {
     let currentSystem = createEmptySystem();
     const segments: (MultiSystemSection | System)[] = [];
